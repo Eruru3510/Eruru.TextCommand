@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30804.86
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Eruru.TextCommand For Shared Project", "Eruru.TextCommand For Shared Project\Eruru.TextCommand For Shared Project.shproj", "{E8A0ED36-E821-4123-9B57-17AEEC56522E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp1", "ConsoleApp1\ConsoleApp1.csproj", "{1DB15F69-29C8-4FD4-8D67-2558AABA60DF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eruru.TextCommand", "Eruru.TextCommand\Eruru.TextCommand.csproj", "{E597B196-D138-4724-9771-9FE86FFA86B9}"
+EndProject
+Global
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		Eruru.TextCommand For Shared Project\Eruru.TextCommand For Shared Project.projitems*{e597b196-d138-4724-9771-9fe86ffa86b9}*SharedItemsImports = 5
+		Eruru.TextCommand For Shared Project\Eruru.TextCommand For Shared Project.projitems*{e8a0ed36-e821-4123-9b57-17aeec56522e}*SharedItemsImports = 13
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1DB15F69-29C8-4FD4-8D67-2558AABA60DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1DB15F69-29C8-4FD4-8D67-2558AABA60DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1DB15F69-29C8-4FD4-8D67-2558AABA60DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1DB15F69-29C8-4FD4-8D67-2558AABA60DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E597B196-D138-4724-9771-9FE86FFA86B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E597B196-D138-4724-9771-9FE86FFA86B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E597B196-D138-4724-9771-9FE86FFA86B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E597B196-D138-4724-9771-9FE86FFA86B9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5442D19D-E342-4B4F-9E59-4EC6F3309F52}
+	EndGlobalSection
+EndGlobal
