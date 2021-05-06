@@ -1,17 +1,38 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Reflection;
+using System.IO;
+using Eruru.TextTokenizer;
 
 namespace Eruru.TextCommand {
 
+	public delegate void TextCommandAction<in T1, in T2> (T1 arg1, T2 arg2);
+
 	static class TextCommandApi {
 
-		public static T GetCustomAttribute<T> (MethodInfo methodInfo) where T : Attribute {
-			if (methodInfo is null) {
-				throw new ArgumentNullException (nameof (methodInfo));
+		public static bool Parse (TextReader textReader, out string name, out List<TextTokenizerToken<TextCommandTokenType>> parameters) {
+			using (TextTokenizer<TextCommandTokenType> tokenizer = new TextTokenizer<TextCommandTokenType> (
+				textReader,
+				TextCommandTokenType.End,
+				TextCommandTokenType.Unknown,
+				TextCommandTokenType.Integer,
+				TextCommandTokenType.Decimal,
+				TextCommandTokenType.String,
+				true
+			)) {
+				name = null;
+				parameters = new List<TextTokenizerToken<TextCommandTokenType>> ();
+				while (tokenizer.MoveNext ()) {
+					if (name is null) {
+						name = tokenizer.Current;
+						continue;
+					}
+					parameters.Add (tokenizer.Current);
+				}
+				if (name is null) {
+					return false;
+				}
+				return true;
 			}
-			object[] attributes = methodInfo.GetCustomAttributes (typeof (T), false);
-			return attributes.Length == 0 ? null : (T)attributes[0];
 		}
 
 		public static bool Contains (IEnumerable<string> strings, string value, bool ignoreCase = true) {
@@ -55,7 +76,7 @@ namespace Eruru.TextCommand {
 				case TypeCode.DateTime:
 					return TextCommandTokenType.String;
 				default:
-					throw new Exception ($"不支持{type}");
+					throw new NotImplementedException ();
 			}
 		}
 

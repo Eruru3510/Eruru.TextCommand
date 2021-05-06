@@ -1,6 +1,6 @@
 ﻿namespace Eruru.TextCommand {
 
-	enum TextCommandTokenType {
+	public enum TextCommandTokenType {
 
 		End,
 		Unknown,
