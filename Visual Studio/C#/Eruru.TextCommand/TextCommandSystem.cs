@@ -20,7 +20,7 @@ namespace Eruru.TextCommand {
 		internal const int ParameterOffset = 1;
 
 		public void Register<T> () {
-			ReaderWriterLockHelper.Write ((ref Dictionary<string, TextCommand<PermissionLevel>> commands) => {
+			ReaderWriterLockHelper.Write (commands => {
 				foreach (MethodInfo methodInfo in typeof (T).GetMethods (BindingFlags.Static | BindingFlags.Public | BindingFlags.NonPublic)) {
 					TextCommandAttribute attribute = methodInfo.GetAttribute<TextCommandAttribute> ();
 					if (attribute is null) {
@@ -43,7 +43,7 @@ namespace Eruru.TextCommand {
 			if (action is null) {
 				throw new ArgumentNullException (nameof (action));
 			}
-			ReaderWriterLockHelper.Write ((ref Dictionary<string, TextCommand<PermissionLevel>> commands) => {
+			ReaderWriterLockHelper.Write (commands => {
 				commands[id] = new TextCommand<PermissionLevel> (id, name, tag, permissionLevel, action);
 			});
 		}
@@ -66,7 +66,7 @@ namespace Eruru.TextCommand {
 			if (action is null) {
 				throw new ArgumentNullException (nameof (action));
 			}
-			ReaderWriterLockHelper.Write ((ref Dictionary<string, TextCommand<PermissionLevel>> commands) => {
+			ReaderWriterLockHelper.Write (commands => {
 				commands[id] = new TextCommand<PermissionLevel> (id, names, tag, permissionLevel, action);
 			});
 		}
@@ -114,7 +114,7 @@ namespace Eruru.TextCommand {
 			}
 			T insideReturnValue = default;
 			bool executed = false;
-			ReaderWriterLockHelper.Read ((ref Dictionary<string, TextCommand<PermissionLevel>> commands) => {
+			ReaderWriterLockHelper.Read (commands => {
 				foreach (var command in commands.Values) {
 					if (!TextCommandApi.Contains (command.Names, name, ignoreCase)) {
 						continue;
@@ -217,7 +217,7 @@ namespace Eruru.TextCommand {
 			if (action is null) {
 				throw new ArgumentNullException (nameof (action));
 			}
-			ReaderWriterLockHelper.Read ((ref Dictionary<string, TextCommand<PermissionLevel>> commands) => {
+			ReaderWriterLockHelper.Read (commands => {
 				foreach (var command in commands.Values) {
 					action (command);
 				}
